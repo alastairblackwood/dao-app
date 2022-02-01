@@ -1,29 +1,21 @@
 {
-    "compilerOptions": {
-        "esModuleInterop": true,
-        "experimentalDecorators": true,
-        "baseUrl": ".",
-        "module": "commonjs",
-        "skipLibCheck": true,
-        "noEmit": true,
-        "allowSyntheticDefaultImports": true,
-        "target": "ESNext",
-        "moduleResolution": "node",
-        "pretty": true,
-        "sourceMap": true,
-        "resolveJsonModule": true,
-        "outDir": "./dist",
-        "forceConsistentCasingInFileNames": true,
-        "typeRoots": [
-            "./src/@types",
-            "./src/@types/**/*",
-            "./node_modules/@types"
-        ],
-    },
-    "include": [
-        "./src/**/*", "src/@types",
-    ],
-    "exclude": [
-        "node_modules",
-    ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "module": "commonjs",
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "pretty": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./src/@types", "./src/@types/**/*", "./node_modules/@types"]
+  },
+  "include": ["./src/**/*", "src/@types"],
+  "exclude": ["node_modules"]
 }
