@@ -8,10 +8,6 @@ import {
 import { Heading, VStack, Flex } from "@chakra-ui/layout";
 import { useColorMode } from "@chakra-ui/color-mode";
 import ThemeToggler from "./components/ThemeToggler";
-
-// import Header from "./components/Header";
-// import Social from "./components/Social";
-// import Profile from "./components/Profile";
 import Login from "./pages/Login";
 
 import "./App.css";
