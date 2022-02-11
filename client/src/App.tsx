@@ -1,34 +1,20 @@
 import React from "react";
-import {
-  ThemeProvider,
-  theme,
-  ColorModeProvider,
-  CSSReset,
-} from "@chakra-ui/react";
-import { Heading, VStack, Flex } from "@chakra-ui/layout";
-import { useColorMode } from "@chakra-ui/color-mode";
-import ThemeToggler from "./components/ThemeToggler";
-import Login from "./pages/Login";
+import { Flex } from "@chakra-ui/react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/HomePage";
+import HomeLayout from "../src/pages/HomeLayout";
 
-import "./App.css";
-
+// https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 function App() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  const isDark = colorMode === "dark";
-
   return (
-    <ThemeProvider theme={theme}>
-      <CSSReset />
-      <ThemeToggler />
-      <VStack p={5}>
-        <Flex w="100%">
-          <Heading ml="8" size="md" fontWeight="semibold" color="cyan.400">
-            React Dao
-          </Heading>
-        </Flex>
-        <Login />
-      </VStack>
-    </ThemeProvider>
+    <Flex className="App" direction="column">
+      {/* <Flex border="1px solid red">nav</Flex>
+      <Flex border="1px solid yellow"> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Flex>
+    // </Flex>
   );
 }
 

@@ -3,15 +3,18 @@ import ReactDOM from "react-dom";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import "./index.css";
 import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <ChakraProvider>
-      <ColorModeScript initialColorMode="light"></ColorModeScript>
+      {/* add AuthContext.Provider here */}
+      <ColorModeScript initialColorMode="light" />
       <App />
+      {/* add AuthContext.Provider here */}
     </ChakraProvider>
-  </React.StrictMode>,
+  </BrowserRouter>,
   document.getElementById("root")
 );
 

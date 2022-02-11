@@ -5,14 +5,25 @@ import {
   IconButton,
   Heading,
   Text,
-  VStack,
+  Stack,
   Image,
 } from "@chakra-ui/react";
+import SuperDao from "../assets/img/SuperDaoLogo2.svg";
 
-export default function Logo() {
+// Render SVG
+const Logo = () => {
   return (
-    <Box boxSize="sm">
-      <Image src="'../logo.svg" />
-    </Box>
+    <Stack direction="row">
+      <Box boxSize="lg" w="200%" p={4}>
+        <Image src={SuperDao} alt="Super DAO" />
+      </Box>
+    </Stack>
   );
-}
+};
+
+//** */ RENDER PNG FILE
+// const Logo = () => {
+//   return <Image src={"/assets/img/Group3.png"} alt="Super DAO" />;
+// };
+
+export default Logo;

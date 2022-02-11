@@ -1,4 +1,6 @@
-export const userLogin = async ({
+import react from "react";
+
+const userLogin = async ({
   email,
   password,
 }: {
@@ -7,7 +9,7 @@ export const userLogin = async ({
 }): Promise<void> => {
   return new Promise<void>((resolve, reject) => {
     setTimeout(() => {
-      if (email === 'test@test.com' && password === 'password') {
+      if (email === "test@test.com" && password === "password") {
         resolve();
       } else {
         reject();
@@ -15,3 +17,5 @@ export const userLogin = async ({
     }, 3000);
   });
 };
+
+export default userLogin;

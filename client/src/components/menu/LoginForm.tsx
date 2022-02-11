@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Flex,
   Box,
@@ -12,16 +12,16 @@ import {
   Button,
   CircularProgress,
   Text,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
-import { userLogin } from '../utils/mockApi';
-import ErrorMessage from '../components/ErrorMessage';
+import userLogin from "../../utils/mockApi";
+import ErrorMessage from "../../utils/ErrorMessage";
 
-export default function Login() {
+const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const handlePasswordVisibility = () => setShowPassword(!showPassword);
@@ -35,10 +35,10 @@ export default function Login() {
       setLoading(false);
       setShowPassword(false);
     } catch (error) {
-      setError('Invalid username or password');
+      setError("Invalid username or password");
       setLoading(false);
-      setEmail('');
-      setPassword('');
+      setEmail("");
+      setPassword("");
       setShowPassword(false);
     }
   };
@@ -79,17 +79,19 @@ export default function Login() {
                     type="email"
                     placeholder="test@test.com"
                     size="lg"
-                    onChange={event => setEmail(event.currentTarget.value)}
+                    onChange={(event) => setEmail(event.currentTarget.value)}
                   />
                 </FormControl>
                 <FormControl isRequired mt={6}>
                   <FormLabel>Password</FormLabel>
                   <InputGroup>
                     <Input
-                      type={showPassword ? 'text' : 'password'}
+                      type={showPassword ? "text" : "password"}
                       placeholder="*******"
                       size="lg"
-                      onChange={event => setPassword(event.currentTarget.value)}
+                      onChange={(event) =>
+                        setPassword(event.currentTarget.value)
+                      }
                     />
                     <InputRightElement width="3rem">
                       <Button
@@ -120,7 +122,7 @@ export default function Login() {
                       color="teal"
                     />
                   ) : (
-                    'Sign In'
+                    "Sign In"
                   )}
                 </Button>
               </form>
@@ -130,4 +132,6 @@ export default function Login() {
       </Box>
     </Flex>
   );
-}
+};
+
+export default Login;
