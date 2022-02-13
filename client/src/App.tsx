@@ -1,6 +1,7 @@
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
+import { Header, Navbar } from "./components/common";
 import Home from "./pages/HomePage";
 import HomeLayout from "../src/pages/HomeLayout";
 
@@ -8,8 +9,7 @@ import HomeLayout from "../src/pages/HomeLayout";
 function App() {
   return (
     <Flex className="App" direction="column">
-      {/* <Flex border="1px solid red">nav</Flex>
-      <Flex border="1px solid yellow"> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
