@@ -1,20 +1,18 @@
 import React from "react";
 import { Flex } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
-import { Header, Navbar } from "./components/common";
-import Home from "./pages/HomePage";
-import HomeLayout from "../src/pages/HomeLayout";
+import { Navbar, Layout } from "./components/common";
+import Login from "./pages/Login";
 
 // https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 function App() {
   return (
-    <Flex className="App" direction="column">
+    <Layout>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
       </Routes>
-    </Flex>
-    // </Flex>
+    </Layout>
   );
 }
 

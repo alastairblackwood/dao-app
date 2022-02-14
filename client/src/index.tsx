@@ -1,14 +1,20 @@
-import React from "react";
 import ReactDOM from "react-dom";
-import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+import { BrowserRouter } from "react-router-dom";
+import {
+  ChakraProvider,
+  CSSReset,
+  theme,
+  ColorModeScript,
+} from "@chakra-ui/react";
+import { useTheme } from "../src/theme/custom";
 import "./index.css";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
+import customTheme from "./theme/Theme";
 
 ReactDOM.render(
   <BrowserRouter>
-    <ChakraProvider>
+    <ChakraProvider theme={customTheme}>
       {/* add AuthContext.Provider here */}
       <ColorModeScript initialColorMode="light" />
       <App />

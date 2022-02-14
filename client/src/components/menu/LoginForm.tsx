@@ -12,12 +12,13 @@ import {
   Button,
   CircularProgress,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 import userLogin from "../../utils/mockApi";
 import ErrorMessage from "../../utils/ErrorMessage";
 
-const Login = () => {
+const LoginForm = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -44,7 +45,13 @@ const Login = () => {
   };
 
   return (
-    <Flex align="center" justifyContent="center" height="100vh" width="full">
+    <Flex
+      align="center"
+      bg={useColorModeValue("gray.100", "gray.900")}
+      justifyContent="center"
+      height="100vh"
+      width="full"
+    >
       <Box
         p={8}
         maxWidth="500px"
@@ -134,4 +141,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginForm;
