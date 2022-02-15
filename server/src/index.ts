@@ -1,54 +1,38 @@
-import express, { Request, Response } from 'express';
-import mongoose from 'mongoose';
-import cookieSession from 'cookie-session';
-import bodyParser from 'body-parser';
 import compression from 'compression';
+import dotenv from 'dotenv';
 import cors from 'cors';
+import express, { Request, Response } from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import dotenv from 'dotenv';
-import passport from 'passport';
-
-import { router } from './routes/userRoutes';
-// import configPassport from './services/passport';
-// require('dotenv').config();
-
 const app = express();
+const port = process.env.PORT || 8000;
 
-dotenv.config({ path: './config.env' });
+dotenv.config();
+import connectDB from './config/db';
+import userRoutes from './routes/user/userRoute';
+import { errorHandler, notFound } from './middleswares/errorMiddleware';
 
-const DB = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
+connectDB();
 
-// connect to db
-mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
-  .then(() => console.log('DB connection successful!'));
+console.log(process.env.PORT);
 
 // add middlewares
-app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
-app.use(cookieSession({ keys: ['secret'] }));
-// app.use(router);
+app.use(express.json());
 app.use(helmet());
 app.use(compression());
 app.use(cors());
-app.use(express.json());
 app.use(morgan('dev'));
+app.use(notFound);
+app.use(errorHandler);
 
-// setup passport
-// app.use(passport.initialize());
-// configPassport(passport);
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Successfully running',
+  });
+});
 
-app.use('/', router);
+app.use('/api/auth', userRoutes);
 
-app.listen(8000, () => {
-  console.log('The application is listening on port 8000');
+app.listen(port, () => {
+  console.log(`Server successfully running on port ${port}`);
 });
