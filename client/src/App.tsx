@@ -1,16 +1,27 @@
-import React from "react";
-import { Flex } from "@chakra-ui/react";
-import { Routes, Route } from "react-router-dom";
-import { Navbar, Layout } from "./components/common";
-import Login from "./pages/Login";
+import React from 'react';
+import { Flex } from '@chakra-ui/react';
+import { Routes, Route } from 'react-router-dom';
+import { Navbar, Layout } from './components/common';
+import PublicPage from './pages/PublicPage';
+import ProtectedPage from './pages/ProtectedPage';
+import { AuthContextProvider } from './contexts/AuthContext';
 
-// https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth?file=src/App.tsx
 function App() {
   return (
     <Layout>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route element={<Layout children={undefined} />}>
+          <Route path="/" element={<PublicPage />} />
+          <Route
+            path="/protected"
+            element={
+              <AuthContextProvider>
+                <ProtectedPage />
+              </AuthContextProvider>
+            }
+          />
+        </Route>
       </Routes>
     </Layout>
   );

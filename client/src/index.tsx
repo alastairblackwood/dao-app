@@ -1,27 +1,37 @@
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+// import { AuthContextProvider } from './utils/context/AuthContext';
+import { AuthContextProvider } from './contexts/AuthContext';
 import {
   ChakraProvider,
+  Box,
   CSSReset,
   theme,
   ColorModeScript,
-} from "@chakra-ui/react";
-import { useTheme } from "../src/theme/custom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import customTheme from "./theme/Theme";
+  background,
+} from '@chakra-ui/react';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import customTheme from './theme/Theme';
+import styled from '@emotion/styled';
+
+const StyledBox = styled(Box)`
+  background-image: url('../../assets/img/SuperDaoLogo2.svg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+`;
 
 ReactDOM.render(
   <BrowserRouter>
     <ChakraProvider theme={customTheme}>
-      {/* add AuthContext.Provider here */}
-      <ColorModeScript initialColorMode="light" />
-      <App />
-      {/* add AuthContext.Provider here */}
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
     </ChakraProvider>
   </BrowserRouter>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

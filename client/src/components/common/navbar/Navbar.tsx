@@ -1,8 +1,8 @@
 import {
   Box,
   Flex,
-  Avatar,
   Link,
+  Avatar,
   Button,
   Image,
   Menu,
@@ -15,9 +15,12 @@ import {
   Stack,
   useColorMode,
   Center,
-} from "@chakra-ui/react";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import SuperDaoDrawer from "../../../assets/img/Group3.svg";
+  Spacer,
+} from '@chakra-ui/react';
+import { UserOutlined } from '@ant-design/icons';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import LoginForm from '../../forms/LoginForm';
+import SuperDaoDrawer from '../../../assets/img/Group3.svg';
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -25,36 +28,30 @@ const Navbar = () => {
   return (
     <>
       <Box px={4}>
-        <Flex h={24} alignItems={"center"} justifyContent={"space-between"}>
-          <Image src={SuperDaoDrawer} alt="Super DAO" />{" "}
-          <Flex alignItems={"center"}>
-            <Stack direction={"row"} spacing={7}>
-              <Button onClick={toggleColorMode}>
-                {colorMode === "dark" ? <MoonIcon /> : <SunIcon />}
-              </Button>
-
+        <Flex h={24} alignItems={'left'} justifyContent={'space-between'}>
+          <Image src={SuperDaoDrawer} alt="Super DAO" mr="20" />
+          <Flex alignItems={'center'}>
+            <Stack direction={'row'} spacing={20}>
+              {/* <Button onClick={toggleColorMode} mr="20">
+                {colorMode === 'dark' ? <MoonIcon /> : <SunIcon />}
+              </Button> */}
+              <Spacer />
+              <Box mr="20"></Box>
+              <Spacer />
               <Menu>
+                <Avatar src="https://bit.ly/broken-link" />
                 <MenuButton
                   as={Button}
-                  fontFamily={"Audiowide-Regular"}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
+                  fontFamily={'Audiowide-Regular'}
+                  variant={'link'}
+                  cursor={'pointer'}
                   minW={0}
+                  ml={20}
                 >
-                  Login/Signup
+                  Login/Sign Up
                 </MenuButton>
-                <MenuList alignItems={"center"}>
-                  <br />
-                  <Center></Center>
-                  <br />
-                  <Center>
-                    <p>Username</p>
-                  </Center>
-                  <br />
-                  <MenuDivider />
-                  <MenuItem>Account Settings</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                <MenuList alignItems={'center'}>
+                  <LoginForm />
                 </MenuList>
               </Menu>
             </Stack>

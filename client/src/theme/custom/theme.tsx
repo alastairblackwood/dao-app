@@ -4,6 +4,7 @@ import { radii } from "./radii";
 import { space } from "./space";
 import { typography } from "./typography";
 import { components } from "./components";
+import { breakpoints } from "./breakpoints";
 
 export default extendTheme({
   ...colors,
@@ -11,4 +12,5 @@ export default extendTheme({
   ...space,
   ...typography,
   ...components,
+  ...breakpoints,
 });

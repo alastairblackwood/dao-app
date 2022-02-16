@@ -1,6 +1,13 @@
-import React from "react";
-import { Flex, useColorModeValue } from "@chakra-ui/react";
-import Navbar from "../navbar/Navbar";
+import React from 'react';
+import { Flex, useColorModeValue } from '@chakra-ui/react';
+import {
+  Box,
+  Drawer,
+  DrawerContent,
+  useDisclosure,
+  useMediaQuery,
+} from '@chakra-ui/react';
+import Navbar from '../navbar/Navbar';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -9,10 +16,12 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <Flex
-      bg={useColorModeValue("gray.100", "gray.900")}
+      bgGradient="linear(to-t, #1d2225, #424242)"
       direction="column"
       align="center"
-      maxW={{ xl: "1200px" }}
+      h="100%"
+      minH="100vh"
+      maxW={{ xl: '1200px' }}
       m="0 auto"
     >
       {children}
