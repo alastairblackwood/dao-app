@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState, ReactNode, useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import {
   Flex,
   Box,
@@ -17,46 +16,19 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-import { UserContext } from '../../utils/context/UserContext';
+import { AuthContext, AuthContextProvider } from '../../contexts/AuthContext';
 import userLogin from '../../utils/mockApi';
-import daoAPI from '../../utils/api/api';
 import ErrorMessage from '../../utils/ErrorMessage';
 import { config } from 'process';
 
-const baseURL = 'http://localhost:8000/api/auth';
-
 const LoginForm = () => {
-  const auth = useContext(UserContext);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { loggedIn, login, logout } = useContext(AuthContext);
+
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [value, setValues] = useState({
-    email: '',
-    password: '',
-  });
-
-  // form inputs and values
-  const inputs = [
-    {
-      id: '1',
-      name: 'email',
-      type: 'email',
-      placeholder: 'Email',
-      errorMessage: 'Please enter a valid email address',
-      label: 'Email',
-    },
-    {
-      id: '2',
-      name: 'password',
-      type: 'password',
-      placeholder: 'Password',
-      errorMessage: 'Please enter a valid password',
-      label: 'Password',
-    },
-  ];
 
   const handlePasswordVisibility = () => setShowPassword(!showPassword);
 
@@ -65,8 +37,7 @@ const LoginForm = () => {
 
     setLoading(true);
     try {
-      await userLogin({ email, password });
-      setIsLoggedIn(true);
+      await login(email, password);
       setLoading(false);
       setShowPassword(false);
     } catch (error) {
@@ -76,33 +47,6 @@ const LoginForm = () => {
       setPassword('');
       setShowPassword(false);
     }
-
-    // setLoading(true);
-    auth.loading();
-    // post the request on pressing the submit, posting the input values
-    const { data } = await axios.post(
-      `${baseURL}/login`,
-      {
-        ...value,
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-
-    auth.login();
-
-    // log userInfo in localStorage in browswer
-    console.log(data);
-    localStorage.setItem('userInfo', JSON.stringify(data));
-    // turn off Loading sequence/spinner
-    auth.notLoading();
-  };
-
-  const onChange = (event: { target: { name: any; value: any } }) => {
-    setValues({ ...value, [event.target.name]: event.target.value });
   };
 
   return (
@@ -120,7 +64,7 @@ const LoginForm = () => {
         borderRadius={4}
         boxShadow="lg"
       >
-        {isLoggedIn ? (
+        {loggedIn ? (
           <Box textAlign="center">
             <Text fontFamily="Audiowide-Regular">{email} logged in!</Text>
             <Button
@@ -128,7 +72,7 @@ const LoginForm = () => {
               variant="outline"
               width="full"
               mt={4}
-              onClick={() => setIsLoggedIn(false)}
+              onClick={async () => await logout()}
             >
               Sign out
             </Button>

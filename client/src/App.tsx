@@ -1,26 +1,18 @@
-import React from 'react';
-import { Flex } from '@chakra-ui/react';
+import React, { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Navbar, Layout } from './components/common';
+import { AuthContext, AuthContextProvider } from './contexts/AuthContext';
+import Layout from './components/common/layout/Layout';
 import PublicPage from './pages/PublicPage';
 import ProtectedPage from './pages/ProtectedPage';
-import { AuthContextProvider } from './contexts/AuthContext';
 
 function App() {
+  const { loggedIn } = useContext(AuthContext);
   return (
     <Layout>
-      <Navbar />
       <Routes>
         <Route element={<Layout children={undefined} />}>
-          <Route path="/" element={<PublicPage />} />
-          <Route
-            path="/protected"
-            element={
-              <AuthContextProvider>
-                <ProtectedPage />
-              </AuthContextProvider>
-            }
-          />
+          {loggedIn && <Route path="/protected" element={<ProtectedPage />} />}
+          {!loggedIn && <Route path="/" element={<PublicPage />} />}
         </Route>
       </Routes>
     </Layout>

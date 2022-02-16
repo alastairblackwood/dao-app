@@ -1,27 +1,11 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-// import { AuthContextProvider } from './utils/context/AuthContext';
 import { AuthContextProvider } from './contexts/AuthContext';
-import {
-  ChakraProvider,
-  Box,
-  CSSReset,
-  theme,
-  ColorModeScript,
-  background,
-} from '@chakra-ui/react';
+import { ChakraProvider, Box } from '@chakra-ui/react';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import customTheme from './theme/Theme';
-import styled from '@emotion/styled';
-
-const StyledBox = styled(Box)`
-  background-image: url('../../assets/img/SuperDaoLogo2.svg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-`;
 
 ReactDOM.render(
   <BrowserRouter>
