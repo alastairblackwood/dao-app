@@ -1,20 +1,25 @@
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthContextProvider } from './contexts/AuthContext';
-import { ChakraProvider, Box } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import customTheme from './theme/Theme';
+import { ColorModeSwitcher } from './ColorModeSwitcher';
+import theme from '../src/theme/Theme';
+
+// import '@fontsource/audiowide/400.css';
+// import '@fontsource/open-sans/700.css';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <ChakraProvider theme={customTheme}>
+  <ChakraProvider theme={theme}>
+    {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
+    <BrowserRouter>
       <AuthContextProvider>
         <App />
       </AuthContextProvider>
-    </ChakraProvider>
-  </BrowserRouter>,
+    </BrowserRouter>
+  </ChakraProvider>,
   document.getElementById('root')
 );
 

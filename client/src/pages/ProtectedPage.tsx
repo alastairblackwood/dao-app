@@ -1,23 +1,24 @@
 import React from 'react';
-import { Box, Button, Flex, Image, Heading, Stack } from '@chakra-ui/react';
-import SuperDaoLogo from '../assets/img/SuperDaoLogo2.svg';
+import { Flex, useColorModeValue } from '@chakra-ui/react';
+import {
+  Box,
+  Stack,
+  Image,
+  Drawer,
+  DrawerContent,
+  useDisclosure,
+  useMediaQuery,
+} from '@chakra-ui/react';
+import { Card } from '../containers/cards';
 
-const ProtectedPage = () => {
-  return (
-    <Stack direction="row">
-      <Box
-        boxSize="lg"
-        position="absolute"
-        color="color.100"
-        w="200%"
-        mt="40%"
-        p={4}
-      >
-        <Image src={SuperDaoLogo} alt="Super DAO" />
-      </Box>
-      <Box>PROTECTED</Box>
-    </Stack>
-  );
+type LayoutProps = {
+  children: React.ReactNode;
 };
 
-export default ProtectedPage;
+export const ProtectedPage = ({ children }: LayoutProps) => {
+  return (
+    <Flex>
+      <Card />
+    </Flex>
+  );
+};

@@ -1,28 +1,40 @@
 import React from 'react';
-import { Box, Button, Flex, Image, Heading, Stack } from '@chakra-ui/react';
-import Navbar from '../components/common/navbar/Navbar';
-import SuperDaoLogo from '../assets/img/SuperDaoLogo2.svg';
+import { Flex, useColorModeValue } from '@chakra-ui/react';
+import {
+  Box,
+  Stack,
+  Image,
+  Drawer,
+  DrawerContent,
+  useDisclosure,
+  useMediaQuery,
+} from '@chakra-ui/react';
+import { Navbar } from '../components/common/navbar';
+import SuperDaoLogo from '../../../assets/img/SuperDaoLogo2.svg';
 
-const PublicPage = () => {
-  return (
-    <Stack direction="row">
-      <Box
-        boxSize="lg"
-        position="absolute"
-        color="color.100"
-        w="200%"
-        mt="40%"
-        p={4}
-      >
-        <Image src={SuperDaoLogo} alt="Super DAO" />
-      </Box>
-    </Stack>
-  );
+type LayoutProps = {
+  children: React.ReactNode;
 };
 
-export default PublicPage;
-
-//** */ RENDER PNG FILE
-// const Logo = () => {
-//   return <Image src={"/assets/img/Group3.png"} alt="Super DAO" />;
-// };
+export const PublicPage = ({ children }: LayoutProps) => {
+  return (
+    <Flex
+      bgGradient="linear(to-t, #1d2225, #424242)"
+      direction="column"
+      align="center"
+      h="100%"
+      w="100%"
+      minH="100vh"
+      maxW={{ xl: '1200px' }}
+      m="0 auto"
+    >
+      <Navbar />
+      <Stack direction="row">
+        <Box boxSize="lg" color="color.100" w="100%" mt="40%" p={4}>
+          <Image src={SuperDaoLogo} alt="Super DAO" />
+        </Box>
+      </Stack>
+      {/* {children} */}
+    </Flex>
+  );
+};

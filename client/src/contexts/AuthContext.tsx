@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import React, { createContext, useState, ReactNode, useContext } from 'react';
 
-const API_URL = 'http://localhost:8000/api/auth/';
+const API_URL = 'http://localhost:8000/api/';
 
 export interface IAuthContext {
   user: any;

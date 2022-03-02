@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useEffect, ReactNode, useContext } from 'react';
+import React, { useState, ReactNode, useContext } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import {
   Flex,
@@ -22,12 +22,11 @@ import userLogin from '../../utils/mockApi';
 import ErrorMessage from '../../utils/ErrorMessage';
 import { config } from 'process';
 
-const LoginForm = () => {
+export const RegisterForm = () => {
   const { loggedIn, login, logout } = useContext(AuthContext);
 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -52,11 +51,11 @@ const LoginForm = () => {
   };
 
   return (
-    <Flex justifyContent={'center'} alignItems={'center'} mt={6}>
-      <Box>
+    <Flex align="center" justifyContent="center" height="30vh" width="full">
+      <Box p={4} bgColor="black.300" maxWidth="346px" h="267px" boxShadow="lg">
         {loggedIn ? (
           <Box textAlign="center">
-            <Text fontFamily="Saira-Condensed">{email} logged in!</Text>
+            <Text fontFamily="Audiowide-Regular">{email} logged in!</Text>
             <Button
               variant="outline"
               width="full"
@@ -72,15 +71,10 @@ const LoginForm = () => {
               <form onSubmit={handleSubmit}>
                 {error && <ErrorMessage message={error} />}
                 <FormControl isRequired>
-                  <FormLabel fontFamily="Saira-Condensed" fontSize="10px">
+                  <FormLabel fontFamily="Audiowide-Regular" fontSize="10px">
                     Email
                   </FormLabel>
                   <Input
-                    w="250px"
-                    borderColor={'white'}
-                    borderStart={'none'}
-                    borderEnd={'none'}
-                    borderTop={'none'}
                     type="email"
                     placeholder="labrys@email.com"
                     size="sm"
@@ -88,40 +82,17 @@ const LoginForm = () => {
                   />
                 </FormControl>
                 <FormControl isRequired mt={4}>
-                  <FormLabel fontFamily="Saira-Condensed" fontSize="10px">
+                  <FormLabel fontFamily="Audiowide-Regular" fontSize="10px">
                     Password
                   </FormLabel>
                   <InputGroup>
                     <Input
-                      borderColor={'white'}
-                      borderStart={'none'}
-                      borderEnd={'none'}
-                      borderTop={'none'}
                       type={showPassword ? 'text' : 'password'}
                       placeholder="*******"
                       size="sm"
                       onChange={event => setPassword(event.currentTarget.value)}
                     />
-                  </InputGroup>
-                </FormControl>
-                <FormControl isRequired mt={4}>
-                  <FormLabel fontFamily="Saira-Condensed" fontSize="10px">
-                    Confirm Password
-                  </FormLabel>
-                  <InputGroup>
-                    <Input
-                      borderColor={'white'}
-                      borderStart={'none'}
-                      borderEnd={'none'}
-                      borderTop={'none'}
-                      type={showPassword ? 'text' : 'password'}
-                      placeholder="*******"
-                      size="sm"
-                      onChange={event => setPassword(event.currentTarget.value)}
-                    />
-                  </InputGroup>
-                </FormControl>
-                {/* <InputRightElement width="3rem">
+                    <InputRightElement width="3rem">
                       <Button
                         h="1.5rem"
                         size="sm"
@@ -133,16 +104,42 @@ const LoginForm = () => {
                           <Icon name="view" />
                         )}
                       </Button>
-                    </InputRightElement> */}
-                {/* </InputGroup>
-                </FormControl> */}
+                    </InputRightElement>
+                  </InputGroup>
+                </FormControl>
+                <FormControl isRequired mt={4}>
+                  <FormLabel fontFamily="Audiowide-Regular" fontSize="10px">
+                    Confirm Password
+                  </FormLabel>
+                  <InputGroup>
+                    <Input
+                      type={showPassword ? 'text' : 'password'}
+                      placeholder="*******"
+                      size="sm"
+                      onChange={event => setPassword(event.currentTarget.value)}
+                    />
+                    <InputRightElement width="3rem">
+                      <Button
+                        h="1.5rem"
+                        size="sm"
+                        onClick={handlePasswordVisibility}
+                      >
+                        {showPassword ? (
+                          <Icon name="view-off" />
+                        ) : (
+                          <Icon name="view" />
+                        )}
+                      </Button>
+                    </InputRightElement>
+                  </InputGroup>
+                </FormControl>
                 {/* <Button
                   width="full"
                   variantColor="teal"
                   variant="ghost"
                   mt={4}
                   type="submit"
-                  fontFamily="Saira-Condensed"
+                  fontFamily="Audiowide-Regular"
                 >
                   {loading ? (
                     <CircularProgress
@@ -153,32 +150,14 @@ const LoginForm = () => {
                   ) : (
                     'Login'
                   )}
+                 
                 </Button> */}
-                <Box>
-                  <Text
-                    fontFamily="Saira-Condensed"
-                    fontWeight="bold"
-                    fontSize={20}
-                    mt={4}
-                    ml={24}
-                  >
-                    <Link to="/protected">Login</Link>
-                  </Text>
-                </Box>
+                <Text fontSize={20} mt={4} ml={24}>
+                  <Link to="/cards">Register</Link>
+                </Text>
                 <Box textAlign="center">
-                  <Text fontWeight="bold" fontSize="12px" mt={4}>
-                    New member?{' '}
-                    <Button
-                      w={'80px'}
-                      type={'submit'}
-                      bg={'transparent'}
-                      fontFamily="Saira-Condensed"
-                      fontWeight={'bold'}
-                      fontSize={14}
-                      onSubmit={handleSubmit}
-                    >
-                      Register here
-                    </Button>
+                  <Text fontFamily="Audiowide-Regular" fontSize="12px" mt={4}>
+                    Already has an account? <Link to="/login">Login here</Link>
                   </Text>
                 </Box>
               </form>
@@ -189,5 +168,3 @@ const LoginForm = () => {
     </Flex>
   );
 };
-
-export default LoginForm;
