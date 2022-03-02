@@ -52,7 +52,7 @@ const LoginForm = () => {
   };
 
   return (
-    <Flex justifyContent={'center'} alignItems={'center'} mt={6}>
+    <Flex justifyContent={'center'} alignItems={'center'} mt={4}>
       <Box>
         {loggedIn ? (
           <Box textAlign="center">
@@ -72,7 +72,11 @@ const LoginForm = () => {
               <form onSubmit={handleSubmit}>
                 {error && <ErrorMessage message={error} />}
                 <FormControl isRequired>
-                  <FormLabel fontFamily="Saira-Condensed" fontSize="10px">
+                  <FormLabel
+                    fontFamily="Saira-Condensed"
+                    fontSize="12px"
+                    fontWeight={'bold'}
+                  >
                     Email
                   </FormLabel>
                   <Input
@@ -88,7 +92,11 @@ const LoginForm = () => {
                   />
                 </FormControl>
                 <FormControl isRequired mt={4}>
-                  <FormLabel fontFamily="Saira-Condensed" fontSize="10px">
+                  <FormLabel
+                    fontFamily="Saira-Condensed"
+                    fontSize="12px"
+                    fontWeight={'bold'}
+                  >
                     Password
                   </FormLabel>
                   <InputGroup>
@@ -104,8 +112,12 @@ const LoginForm = () => {
                     />
                   </InputGroup>
                 </FormControl>
-                <FormControl isRequired mt={4}>
-                  <FormLabel fontFamily="Saira-Condensed" fontSize="10px">
+                {/* <FormControl isRequired mt={4}>
+                  <FormLabel
+                    fontFamily="Saira-Condensed"
+                    fontSize="10px"
+                    fontWeight={'bold'}
+                  >
                     Confirm Password
                   </FormLabel>
                   <InputGroup>
@@ -120,7 +132,7 @@ const LoginForm = () => {
                       onChange={event => setPassword(event.currentTarget.value)}
                     />
                   </InputGroup>
-                </FormControl>
+                </FormControl> */}
                 {/* <InputRightElement width="3rem">
                       <Button
                         h="1.5rem"
@@ -159,14 +171,14 @@ const LoginForm = () => {
                     fontFamily="Saira-Condensed"
                     fontWeight="bold"
                     fontSize={20}
-                    mt={4}
+                    mt={2}
                     ml={24}
                   >
                     <Link to="/protected">Login</Link>
                   </Text>
                 </Box>
                 <Box textAlign="center">
-                  <Text fontWeight="bold" fontSize="12px" mt={4}>
+                  <Text fontWeight="bold" fontSize="12px">
                     New member?{' '}
                     <Button
                       w={'80px'}

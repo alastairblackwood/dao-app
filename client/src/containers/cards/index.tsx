@@ -1,31 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Text,
   Badge,
   Icon,
-  Container,
-  Input,
-  Link,
-  Button,
   Flex,
+  Button,
   Stack,
-  VStack,
-  HStack,
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList,
-  Select,
   Heading,
 } from '@chakra-ui/react';
+import ThumbsUpIcon from '@material-ui/icons/ThumbUp';
+import ThumbsDownIcon from '@material-ui/icons/ThumbDown';
 
 export const Card = () => {
   const [isVoted, setIsVoted] = React.useState(false);
+  const [isUpVoted, setIsUpVoted] = React.useState(0);
+  const [isDownVoted, setIsDownVoted] = React.useState(0);
 
   return (
-    <Flex justifyContent={'center'} alignItems={'center'}>
+    <Flex>
       <Box
         w="520px"
         radius="10px"
@@ -34,8 +27,7 @@ export const Card = () => {
         overflow="hidden"
         boxShadow="sm"
         bg="black"
-        position={'absolute'}
-        opacity={0.8}
+        opacity={0.7}
       >
         <Box p={5}>
           <Stack isInline align="baseline">
@@ -56,12 +48,7 @@ export const Card = () => {
           <Heading as="h2" fontWeight="semibold" fontSize="xl" my={2}>
             Buy a Chimpanzee
           </Heading>
-          <Text
-            isTruncated
-            fontWeight="light"
-            textTransform="uppercase"
-            fontSize="md"
-          >
+          <Text isTruncated textTransform="uppercase" fontSize="sm">
             Request Fund %
           </Text>
           <Stack isInline align="baseline">
@@ -70,26 +57,48 @@ export const Card = () => {
             </Heading>
             <Text
               isTruncated
-              fontWeight="light"
+              fontWeight="semibold"
               textTransform="uppercase"
               fontSize="md"
             >
-              0.39 ETH
+              = 0.39 ETH
+            </Text>
+          </Stack>
+          <Stack isInline align="baseline">
+            <Text fontSize={'sm'} fontStyle={'italic'}>
+              Submitted in
+            </Text>
+            <Text fontSize={'sm'} fontStyle={'italic'}>
+              29 Feb 2022
+            </Text>
+          </Stack>
+          <Stack isInline align="baseline">
+            <Text fontSize={'sm'} fontStyle={'italic'}>
+              Submitted by
+            </Text>
+            <Text fontSize={'sm'} fontStyle={'italic'}>
+              0xe84037...9d485
+            </Text>
+          </Stack>
+          <Stack isInline align="baseline">
+            <Text fontSize={'sm'} fontStyle={'italic'}>
+              Recipient
+            </Text>
+            <Text fontSize={'sm'} fontStyle={'italic'}>
+              0xe84037...9d485
             </Text>
           </Stack>
           <Stack isInline justify="space-between" color="gray.500">
-            <Text fontWeight="semibold" fontSize="lg">
-              $20
-            </Text>
+            <Text fontWeight="semibold" fontSize="lg"></Text>
             <Box d="flex">
-              <Box as="span">
-                {Array(4)
-                  .fill('🌟')
-                  .map((star: any, index: number) => (
-                    <Icon name="star" color="yellow.500" key={index} />
-                  ))}
-                <Icon name="star" />
-              </Box>
+              <Button onClick={() => setIsUpVoted(isUpVoted + 1)}>
+                <ThumbsUpIcon htmlColor="green" />{' '}
+                {`${isUpVoted === 0 ? '' : isUpVoted}`}
+              </Button>
+              <Button onClick={() => setIsDownVoted(isDownVoted + 1)}>
+                <ThumbsDownIcon htmlColor="red" />{' '}
+                {`${isDownVoted === 0 ? '' : isDownVoted}`}
+              </Button>
             </Box>
           </Stack>
         </Box>
