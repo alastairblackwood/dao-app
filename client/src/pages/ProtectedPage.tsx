@@ -52,7 +52,7 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
 
               <Spacer />
               <Box isInline align={'baseline'}>
-                <Stack isInline alignItems={'center'} spacing={4}>
+                <Stack isInline alignItems={'center'} spacing={4} mb={4}>
                   <Badge
                     fontFamily={'Audiowide-Regular'}
                     textTransform="uppercase"
@@ -76,23 +76,31 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
                 </Stack>
 
                 <Menu>
-                  <Icon as={AiOutlineLogout} />
+                  <Stack mb={2} isInline align={'baseline'}>
+                    <Text
+                      mr={4}
+                      fontFamily={'Audiowide-Regular'}
+                      fontSize={'sm'}
+                    >
+                      Welcome, labrys@email.com
+                    </Text>
+                    <Icon as={AiOutlineLogout} />
 
-                  <Button
-                    mt={2}
-                    ml={4}
-                    color="white"
-                    fontSize="14px"
-                    fontFamily={'Audiowide-Regular'}
-                    variant={'link'}
-                    cursor={'pointer'}
-                    minW={0}
-                  >
-                    <Link to="/">
-                      <Text>Logout</Text>
-                    </Link>
-                  </Button>
-
+                    <Button
+                      mt={2}
+                      ml={4}
+                      color="white"
+                      fontSize="14px"
+                      fontFamily={'Audiowide-Regular'}
+                      variant={'link'}
+                      cursor={'pointer'}
+                      minW={0}
+                    >
+                      <Link to="/">
+                        <Text>Logout</Text>
+                      </Link>
+                    </Button>
+                  </Stack>
                   <MenuList
                     ml={4}
                     mt={3}
