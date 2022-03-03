@@ -24,6 +24,7 @@ import { ProposalDetail } from '../containers/cards/ProposalDetail';
 import { AiOutlineLogout } from 'react-icons/ai';
 import SuperDaoLogo from '../assets/img/SuperDaoLogo2.svg';
 import SuperDaoDrawer from '../assets/img/Group3.svg';
+import { ProposalForm } from '../components/forms/ProposalForm';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -52,14 +53,21 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
 
               <Spacer />
               <Box isInline align={'baseline'}>
-                <Stack isInline alignItems={'center'} spacing={4} mr={6} mb={4}>
+                <Stack
+                  isInline
+                  alignItems={'center'}
+                  spacing={4}
+                  mr={6}
+                  mt={6}
+                  mb={4}
+                >
                   <Button variant={'ghost'}>
                     <Link to="/protected">
                       <Badge
                         fontFamily={'Audiowide-Regular'}
                         textTransform="uppercase"
                         variant="outline"
-                        fontSize="sm"
+                        fontSize="md"
                         color={'white'}
                         letterSpacing="wide"
                       >
@@ -73,7 +81,7 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
                         fontFamily={'Audiowide-Regular'}
                         textTransform="uppercase"
                         variant="outline"
-                        fontSize="sm"
+                        fontSize="md"
                         color={'white'}
                         letterSpacing="wide"
                       >
@@ -109,19 +117,34 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
                       </Link>
                     </Button>
                   </Stack>
+                  <Button variant={'ghost'}>
+                    <MenuButton>
+                      <Badge
+                        fontFamily={'Audiowide-Regular'}
+                        textTransform="uppercase"
+                        variant="outline"
+                        fontSize="12px"
+                        color={'white'}
+                        letterSpacing="wide"
+                      >
+                        Create Proposal +
+                      </Badge>
+                    </MenuButton>
+                  </Button>
                   <MenuList
                     ml={4}
                     mt={3}
                     justifyContent={'center'}
-                    w="346px"
-                    h="267px"
-                    radius="12px"
+                    w="456px"
+                    h="435px"
+                    radius="10px"
+                    opacity={0.7}
+                    rounded={'lg'}
                     bgGradient="linear(to-l, #323232, #282828)"
                     autoSelect={true}
                     alignItems={'center'}
-                    opacity={0.5}
                   >
-                    <LoginForm />
+                    <ProposalForm />
                   </MenuList>
                 </Menu>
               </Box>

@@ -146,7 +146,7 @@ export const MyProposalPage = ({ children }: LayoutProps) => {
               ethSubmit="0xe84037...9d486"
               ethReceive="0xe84037...uwu69"
               description={
-                "The reason why you would buy a chimpanzee is because they are smart af. Why settle in getting a mainsteam pet like a dog or a cat? If you had a chimpanzee, you could totally train it to fetch you beer, play ping tennis - or rip your arms off. It's like you got a brand new bro! Who doesn't want a smart, cute looking, long-armed buddy?!"
+                "The reason why you would buy a chimpanzee is because they are smart af. Why settle for a mainsteam pet like a dog or a cat? If you had a chimpanzee, you could totally train it to fetch you beer, play ping tennis - or rip your arms off. It's like you got a brand new bro! Who doesn't want a smart, cute looking, long-armed buddy?!"
               }
             />
           </MyProposalCard>

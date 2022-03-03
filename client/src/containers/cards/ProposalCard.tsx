@@ -13,7 +13,7 @@ export const ProposalCard = (props: IProposalCardProps) => {
         className="ui proposal cards"
         w="520px"
         radius="10px"
-        h="236px"
+        h="250px"
         mt={10}
         rounded="lg"
         overflow="hidden"

@@ -46,34 +46,37 @@ export const PublicPage = ({ children }: LayoutProps) => {
               <Spacer />
               <Box isInline align={'baseline'}>
                 <Menu>
-                  <Avatar src="https://bit.ly/broken-link" size="sm" />
-                  <MenuButton
-                    mt={2}
-                    ml={4}
-                    color="white"
-                    fontSize="14px"
-                    fontFamily={'Audiowide-Regular'}
-                    variant={'link'}
-                    cursor={'pointer'}
-                    minW={0}
-                  >
-                    Login / Sign Up
-                  </MenuButton>
-                  <MenuList
-                    ml={4}
-                    mt={3}
-                    justifyContent={'center'}
-                    w="346px"
-                    h="267px"
-                    radius="12px"
-                    bgGradient="linear(to-l, #323232, #282828)"
-                    autoSelect={true}
-                    alignItems={'center'}
-                    opacity={0.5}
-                  >
-                    <LoginForm />
-                  </MenuList>
-                  <TriangleDownIcon ml={2} />
+                  <Button variant={'ghost'}>
+                    <Avatar src="https://bit.ly/broken-link" size="sm" />
+                    <MenuButton
+                      mt={2}
+                      ml={4}
+                      color="white"
+                      fontSize="14px"
+                      fontFamily={'Audiowide-Regular'}
+                      variant={'link'}
+                      cursor={'pointer'}
+                      minW={0}
+                    >
+                      Login / Sign Up
+                    </MenuButton>
+
+                    <MenuList
+                      ml={4}
+                      mt={3}
+                      justifyContent={'center'}
+                      w="346px"
+                      h="267px"
+                      radius="12px"
+                      bgGradient="linear(to-l, #323232, #282828)"
+                      autoSelect={true}
+                      alignItems={'center'}
+                      opacity={0.5}
+                    >
+                      <LoginForm />
+                    </MenuList>
+                    <TriangleDownIcon ml={4} mt={2} />
+                  </Button>
                 </Menu>
               </Box>
             </Stack>
