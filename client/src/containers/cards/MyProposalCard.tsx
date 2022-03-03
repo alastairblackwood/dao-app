@@ -5,15 +5,15 @@ interface IProposalCardProps {
   children: React.ReactNode;
 }
 
-export const ProposalCard = (props: IProposalCardProps) => {
+export const MyProposalCard = (props: IProposalCardProps) => {
   return (
     // Re-usable box for the proposal card
     <Flex>
       <Box
         className="ui proposal cards"
-        w="520px"
+        w="835px"
         radius="10px"
-        h="236px"
+        h="379px"
         mt={10}
         rounded="lg"
         overflow="hidden"

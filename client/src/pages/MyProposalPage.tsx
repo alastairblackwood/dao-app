@@ -24,6 +24,8 @@ import { ProposalDetail } from '../containers/cards/ProposalDetail';
 import { AiOutlineLogout } from 'react-icons/ai';
 import SuperDaoLogo from '../assets/img/SuperDaoLogo2.svg';
 import SuperDaoDrawer from '../assets/img/Group3.svg';
+import { MyProposalCard } from '../containers/cards/MyProposalCard';
+import { ProposalDescription } from '../containers/cards/ProposalDescription';
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -134,8 +136,8 @@ export const MyProposalPage = ({ children }: LayoutProps) => {
       </Flex>
       <VStack justifyContent={'center'} alignItems={'center'}>
         <Box mb={2}>
-          <ProposalCard>
-            <ProposalDetail
+          <MyProposalCard>
+            <ProposalDescription
               type="Buy a chimpanzee"
               badge="In Progress"
               percent="69%"
@@ -143,8 +145,11 @@ export const MyProposalPage = ({ children }: LayoutProps) => {
               timeAgo="29th Feb 2022"
               ethSubmit="0xe84037...9d486"
               ethReceive="0xe84037...uwu69"
+              description={
+                "The reason why you would buy a chimpanzee is because they are smart af. Why settle in getting a mainsteam pet like a dog or a cat? If you had a chimpanzee, you could totally train it to fetch you beer, play ping tennis - or rip your arms off. It's like you got a brand new bro! Who doesn't want a smart, cute looking, long-armed buddy?!"
+              }
             />
-          </ProposalCard>
+          </MyProposalCard>
         </Box>
       </VStack>
     </Flex>
