@@ -7,6 +7,7 @@ import {
   Stack,
   Text,
   Button,
+  Spacer,
 } from '@chakra-ui/react';
 import ThumbsUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbsDownIcon from '@material-ui/icons/ThumbDown';
@@ -27,17 +28,19 @@ export const ProposalDetail = (props: ICommentProps) => {
   const [isDownVoted, setIsDownVoted] = useState(0);
 
   return (
-    <Box className="funding" p={5}>
+    <Box className="funding" p={4}>
       <Stack isInline align="baseline">
         <Text textTransform="uppercase" fontSize="sm" color="white.500">
           Funding Proposal
         </Text>
+        <Spacer />
         <Badge
           textTransform="uppercase"
           variant="outline"
           fontSize="sm"
           letterSpacing="wide"
           rounded="lg"
+          colorScheme="green"
         >
           {props.badge}
         </Badge>
@@ -88,7 +91,8 @@ export const ProposalDetail = (props: ICommentProps) => {
         </Text>
       </Stack>
       <Box d="flex">
-        <Button onClick={() => setIsUpVoted(isUpVoted + 1)}>
+        <Spacer />
+        <Button mb={4} onClick={() => setIsUpVoted(isUpVoted + 1)}>
           <ThumbsUpIcon htmlColor="green" />{' '}
           {`${isUpVoted === 0 ? '' : isUpVoted}`}
         </Button>

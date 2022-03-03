@@ -127,13 +127,8 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
           </Flex>
         </Flex>
       </Box>
-      <Flex justify={'center'} alignItems={'center'} w="100%" maxHeight="100vh">
-        <Box
-          position={'absolute'}
-          justifyContent={'center'}
-          alignItems={'center'}
-          mt={64}
-        >
+      <Flex width="50%">
+        <Box mt={32} position={'absolute'} alignItems={'center'}>
           <Image src={SuperDaoLogo} alt="Super DAO" />
         </Box>
       </Flex>
