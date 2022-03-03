@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Box, Flex, CSSReset, Image, Center, HStack } from '@chakra-ui/react';
 import { AuthContext, AuthContextProvider } from './contexts/AuthContext';
-import { Layout } from './components/common/layout';
 import { PublicPage } from './pages/PublicPage';
 import { ProtectedPage } from './pages/ProtectedPage';
 import { Card } from './containers/cards';

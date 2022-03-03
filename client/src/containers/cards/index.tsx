@@ -88,9 +88,8 @@ export const Card = () => {
               0xe84037...9d485
             </Text>
           </Stack>
-          <Stack isInline justify="space-between" color="gray.500">
-            <Text fontWeight="semibold" fontSize="lg"></Text>
-            <Box d="flex">
+          <Flex>
+            <Box>
               <Button onClick={() => setIsUpVoted(isUpVoted + 1)}>
                 <ThumbsUpIcon htmlColor="green" />{' '}
                 {`${isUpVoted === 0 ? '' : isUpVoted}`}
@@ -100,7 +99,7 @@ export const Card = () => {
                 {`${isDownVoted === 0 ? '' : isDownVoted}`}
               </Button>
             </Box>
-          </Stack>
+          </Flex>
         </Box>
       </Box>
     </Flex>

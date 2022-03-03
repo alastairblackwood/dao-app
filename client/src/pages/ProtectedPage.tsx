@@ -19,8 +19,8 @@ import {
 } from '@chakra-ui/react';
 import LoginForm from '../components/forms/LoginForm';
 import { Card } from '../containers/cards';
-import { MoonIcon, SunIcon, TriangleDownIcon } from '@chakra-ui/icons';
-import { FaBeer } from 'react-icons/fa';
+import { ProposalCard } from '../containers/cards/ProposalCard';
+import { ProposalDetail } from '../containers/cards/ProposalDetail';
 import { AiOutlineLogout } from 'react-icons/ai';
 import SuperDaoLogo from '../assets/img/SuperDaoLogo2.svg';
 import SuperDaoDrawer from '../assets/img/Group3.svg';
@@ -52,33 +52,39 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
 
               <Spacer />
               <Box isInline align={'baseline'}>
-                <Stack isInline alignItems={'center'} spacing={4} mb={4}>
-                  <Badge
-                    fontFamily={'Audiowide-Regular'}
-                    textTransform="uppercase"
-                    variant="outline"
-                    fontSize="sm"
-                    color={'white'}
-                    letterSpacing="wide"
-                  >
-                    All Proposals
-                  </Badge>
-                  <Badge
-                    fontFamily={'Audiowide-Regular'}
-                    textTransform="uppercase"
-                    variant="outline"
-                    fontSize="sm"
-                    color={'white'}
-                    letterSpacing="wide"
-                  >
-                    My Proposals
-                  </Badge>
+                <Stack isInline alignItems={'center'} spacing={4} mr={6} mb={4}>
+                  <Button variant={'ghost'}>
+                    <Link to="/protected">
+                      <Badge
+                        fontFamily={'Audiowide-Regular'}
+                        textTransform="uppercase"
+                        variant="outline"
+                        fontSize="sm"
+                        color={'white'}
+                        letterSpacing="wide"
+                      >
+                        All Proposals
+                      </Badge>
+                    </Link>
+                  </Button>
+                  <Button variant="ghost">
+                    <Badge
+                      fontFamily={'Audiowide-Regular'}
+                      textTransform="uppercase"
+                      variant="outline"
+                      fontSize="sm"
+                      color={'white'}
+                      letterSpacing="wide"
+                    >
+                      My Proposals
+                    </Badge>
+                  </Button>
                 </Stack>
 
                 <Menu>
-                  <Stack mb={2} isInline align={'baseline'}>
+                  <Stack ml={4} mb={2} isInline align={'baseline'}>
                     <Text
-                      mr={4}
+                      mr={6}
                       fontFamily={'Audiowide-Regular'}
                       fontSize={'sm'}
                     >
@@ -133,13 +139,43 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
       </Flex>
       <VStack justifyContent={'center'} alignItems={'center'}>
         <Box mb={2}>
-          <Card />
+          <ProposalCard>
+            <ProposalDetail
+              type="Buy a chimpanzee"
+              badge="In Progress"
+              percent="69%"
+              ethAmount="0.39 ETH"
+              timeAgo="29th Feb 2022"
+              ethSubmit="0xe84037...9d486"
+              ethReceive="0xe84037...uwu69"
+            />
+          </ProposalCard>
         </Box>
         <Box mb={2}>
-          <Card />
+          <ProposalCard>
+            <ProposalDetail
+              type="Buy two chimpanzees"
+              badge="Approved"
+              percent="85%"
+              ethAmount="1.88 ETH"
+              timeAgo="1st Mar 2022"
+              ethSubmit="e098asdfh908a4"
+              ethReceive="e23lklasdf98kljas"
+            />
+          </ProposalCard>
         </Box>
         <Box mb={2}>
-          <Card />
+          <ProposalCard>
+            <ProposalDetail
+              type="Buy a dog or a cat"
+              badge="Declined"
+              percent="15%"
+              ethAmount="0.039 ETH"
+              timeAgo="2nd Mar 2022"
+              ethSubmit="e098asdfh908a4"
+              ethReceive="e23lklasdf98kljas"
+            />
+          </ProposalCard>
         </Box>
       </VStack>
     </Flex>
