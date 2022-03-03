@@ -29,7 +29,7 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
-export const ProtectedPage = ({ children }: LayoutProps) => {
+export const MyProposalPage = ({ children }: LayoutProps) => {
   return (
     <Flex
       bgGradient="linear(to-t, #1d2225, #707070)"
@@ -68,18 +68,16 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
                     </Link>
                   </Button>
                   <Button variant="ghost">
-                    <Link to="/protected/my-proposals">
-                      <Badge
-                        fontFamily={'Audiowide-Regular'}
-                        textTransform="uppercase"
-                        variant="outline"
-                        fontSize="sm"
-                        color={'white'}
-                        letterSpacing="wide"
-                      >
-                        My Proposals
-                      </Badge>
-                    </Link>
+                    <Badge
+                      fontFamily={'Audiowide-Regular'}
+                      textTransform="uppercase"
+                      variant="outline"
+                      fontSize="sm"
+                      color={'white'}
+                      letterSpacing="wide"
+                    >
+                      My Proposals
+                    </Badge>
                   </Button>
                 </Stack>
 
@@ -145,32 +143,6 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
               timeAgo="29th Feb 2022"
               ethSubmit="0xe84037...9d486"
               ethReceive="0xe84037...uwu69"
-            />
-          </ProposalCard>
-        </Box>
-        <Box mb={2}>
-          <ProposalCard>
-            <ProposalDetail
-              type="Buy two chimpanzees"
-              badge="Approved"
-              percent="85%"
-              ethAmount="1.88 ETH"
-              timeAgo="1st Mar 2022"
-              ethSubmit="e098asdfh908a4"
-              ethReceive="e23lklasdf98kljas"
-            />
-          </ProposalCard>
-        </Box>
-        <Box mb={2}>
-          <ProposalCard>
-            <ProposalDetail
-              type="Buy a dog or a cat"
-              badge="Declined"
-              percent="15%"
-              ethAmount="0.039 ETH"
-              timeAgo="2nd Mar 2022"
-              ethSubmit="e098asdfh908a4"
-              ethReceive="e23lklasdf98kljas"
             />
           </ProposalCard>
         </Box>
