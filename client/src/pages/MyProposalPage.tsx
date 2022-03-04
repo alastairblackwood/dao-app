@@ -129,12 +129,16 @@ export const MyProposalPage = ({ children }: LayoutProps) => {
           </Flex>
         </Flex>
       </Box>
-      <Flex width="50%">
-        <Box mt={32} position={'absolute'} alignItems={'center'}>
+      <Flex justify={'center'} align={'center'} width="100%" h="90vh">
+        <Box position={'fixed'} justifyContent={'center'} alignItems={'center'}>
           <Image src={SuperDaoLogo} alt="Super DAO" />
         </Box>
       </Flex>
-      <VStack justifyContent={'center'} alignItems={'center'}>
+      <VStack
+        justifyContent={'center'}
+        alignItems={'center'}
+        position={'absolute'}
+      >
         <Box mb={2}>
           <MyProposalCard>
             <ProposalDescription

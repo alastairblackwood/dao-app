@@ -17,7 +17,7 @@ export const MyProposalCard = (props: IProposalCardProps) => {
         mt={10}
         rounded="lg"
         overflow="hidden"
-        boxShadow="sm"
+        boxShadow="lg"
         bg="black"
         opacity={0.7}
       >

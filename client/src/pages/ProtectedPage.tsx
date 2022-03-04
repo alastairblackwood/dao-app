@@ -117,47 +117,54 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
                       </Link>
                     </Button>
                   </Stack>
-                  <Button variant={'ghost'}>
-                    <MenuButton>
-                      <Badge
-                        fontFamily={'Audiowide-Regular'}
-                        textTransform="uppercase"
-                        variant="outline"
-                        fontSize="12px"
-                        color={'white'}
-                        letterSpacing="wide"
-                      >
-                        Create Proposal +
-                      </Badge>
-                    </MenuButton>
-                  </Button>
-                  <MenuList
-                    ml={4}
-                    mt={3}
-                    justifyContent={'center'}
-                    w="456px"
-                    h="435px"
-                    radius="10px"
-                    opacity={0.7}
-                    rounded={'lg'}
-                    bgGradient="linear(to-l, #323232, #282828)"
-                    autoSelect={true}
-                    alignItems={'center'}
-                  >
-                    <ProposalForm />
-                  </MenuList>
+                  <Box isInline={'baseline'}>
+                    <Menu>
+                      <Button variant={'ghost'}>
+                        <MenuButton>
+                          <Badge
+                            fontFamily={'Audiowide-Regular'}
+                            textTransform="uppercase"
+                            variant="outline"
+                            fontSize="12px"
+                            color={'white'}
+                            letterSpacing="wide"
+                          >
+                            Create Proposal +
+                          </Badge>
+                        </MenuButton>
+
+                        <MenuList
+                          mt={3}
+                          w="456px"
+                          h="525px"
+                          boxShadow={'lg'}
+                          radius="10px"
+                          overflow={'hidden'}
+                          rounded={'lg'}
+                          bg="blackAlpha.800"
+                        >
+                          <ProposalForm />
+                        </MenuList>
+                      </Button>
+                    </Menu>
+                  </Box>
                 </Menu>
               </Box>
             </Stack>
           </Flex>
         </Flex>
       </Box>
-      <Flex width="50%">
-        <Box mt={32} position={'absolute'} alignItems={'center'}>
+      <Flex justify={'center'} align={'center'} width="100%" h="90vh">
+        <Box position={'fixed'} justifyContent={'center'} alignItems={'center'}>
           <Image src={SuperDaoLogo} alt="Super DAO" />
         </Box>
       </Flex>
-      <VStack justifyContent={'center'} alignItems={'center'}>
+      <VStack
+        justifyContent={'center'}
+        alignItems={'center'}
+        position={'absolute'}
+        mt={60}
+      >
         <Box mb={2}>
           <ProposalCard>
             <ProposalDetail
