@@ -10,15 +10,15 @@ This was a project that was created while on an internship programme at blockcha
 
 ## Homepage
 
-![home](img/homepage.png)
+![home](img/Homepage.png)
 
 ## Login
 
-![login](img/login.png)
+![login](img/Login.png)
 
 ## All Proposals
 
-![All proposals](img/all-proposals.png)
+![All proposals](img/AllProposals.png)
 
 ## Create Proposal
 
