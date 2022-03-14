@@ -88,7 +88,7 @@ const LoginForm = () => {
             </Box>
           ) : (
             <>
-              <Box my={0} textAlign="left">
+              <Box my={0} mt={10} textAlign="left">
                 <FormControl>
                   <FormLabel
                     fontFamily="Exo 2"

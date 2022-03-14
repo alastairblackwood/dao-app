@@ -4,11 +4,29 @@
 
 ## Description
 
-This was a project that was created while on an internship programme at blockchain services company Labrys. The brief was to build a full stack application using React for the front-end and NodeJS, MongoDB & Express for the backend and also integrate a Solidity contract too.
+This was a project that was created while on an internship programme at blockchain services company Labrys. The brief was to build a full stack application using the MERN stack and also integrate a Solidity/MetaMask contract too.
 
 ## Visuals
 
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+## Homepage
+
+![home](img/homepage.png)
+
+## Login
+
+![login](img/login.png)
+
+## All Proposals
+
+![All proposals](img/all-proposals.png)
+
+## Create Proposal
+
+![create proposal](img/CreateProposal.png)
+
+## My Proposals
+
+![my proposals](img/MyProposal.png)
 
 ## Installation
 
