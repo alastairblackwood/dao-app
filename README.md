@@ -8,23 +8,23 @@ This was a project that was created while on an internship programme at blockcha
 
 ## Visuals
 
-## Homepage
+### Homepage
 
 ![home](img/Homepage.png)
 
-## Login
+### Login
 
 ![login](img/Login.png)
 
-## All Proposals
+### All Proposals
 
 ![All proposals](img/AllProposals.png)
 
-## Create Proposal
+### Create Proposal
 
 ![create proposal](img/CreateProposal.png)
 
-## My Proposals
+### My Proposals
 
 ![my proposals](img/MyProposal.png)
 
