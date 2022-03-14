@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Flex,
@@ -66,12 +66,12 @@ export const PublicPage = ({ children }: LayoutProps) => {
                       mt={3}
                       justifyContent={'center'}
                       w="346px"
-                      h="267px"
+                      h="350px"
                       radius="12px"
-                      bgGradient="linear(to-l, #323232, #282828)"
+                      rounded={'lg'}
+                      bg="blackAlpha.800"
                       autoSelect={true}
                       alignItems={'center'}
-                      opacity={0.5}
                     >
                       <LoginForm />
                     </MenuList>

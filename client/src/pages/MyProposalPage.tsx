@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import {
   Flex,
@@ -12,26 +13,24 @@ import {
   Button,
   Image,
   Spacer,
-  Avatar,
   Menu,
-  MenuButton,
   MenuList,
 } from '@chakra-ui/react';
 import LoginForm from '../components/forms/LoginForm';
-import { Card } from '../containers/cards';
-import { ProposalCard } from '../containers/cards/ProposalCard';
+import { MyProposalCard } from '../containers/cards/ProposalCard';
 import { ProposalDetail } from '../containers/cards/ProposalDetail';
 import { AiOutlineLogout } from 'react-icons/ai';
 import SuperDaoLogo from '../assets/img/SuperDaoLogo2.svg';
 import SuperDaoDrawer from '../assets/img/Group3.svg';
-import { MyProposalCard } from '../containers/cards/MyProposalCard';
 import { ProposalDescription } from '../containers/cards/ProposalDescription';
 
 type LayoutProps = {
   children: React.ReactNode;
 };
 
-export const MyProposalPage = ({ children }: LayoutProps) => {
+const MyProposalPage = ({ children }: LayoutProps) => {
+  const { logout } = useContext(AuthContext);
+
   return (
     <Flex
       bgGradient="linear(to-t, #1d2225, #707070)"
@@ -56,7 +55,7 @@ export const MyProposalPage = ({ children }: LayoutProps) => {
               <Box isInline align={'baseline'}>
                 <Stack isInline alignItems={'center'} spacing={4} mr={6} mb={4}>
                   <Button variant={'ghost'}>
-                    <Link to="/protected">
+                    <Link to="/">
                       <Badge
                         fontFamily={'Audiowide-Regular'}
                         textTransform="uppercase"
@@ -104,9 +103,7 @@ export const MyProposalPage = ({ children }: LayoutProps) => {
                       cursor={'pointer'}
                       minW={0}
                     >
-                      <Link to="/">
-                        <Text>Logout</Text>
-                      </Link>
+                      <Button onClick={logout}>Logout</Button>
                     </Button>
                   </Stack>
                   <MenuList
@@ -150,7 +147,7 @@ export const MyProposalPage = ({ children }: LayoutProps) => {
               ethSubmit="0xe84037...9d486"
               ethReceive="0xe84037...uwu69"
               description={
-                "The reason why you would buy a chimpanzee is because they are smart af. Why settle for a mainsteam pet like a dog or a cat? If you had a chimpanzee, you could totally train it to fetch you beer, play ping tennis - or rip your arms off. It's like you got a brand new bro! Who doesn't want a smart, cute looking, long-armed buddy?!"
+                "The reason why you would buy a chimpanzee is because they are smart af. Why settle for a mainstream pet like a dog or a cat? If you had a chimpanzee, you could totally train it to fetch you beer, play ping tennis - or rip your arms off. It's like you got a brand new bro! Who doesn't want a smart, cute looking, long-armed buddy?!"
               }
             />
           </MyProposalCard>
@@ -159,3 +156,5 @@ export const MyProposalPage = ({ children }: LayoutProps) => {
     </Flex>
   );
 };
+
+export default MyProposalPage;

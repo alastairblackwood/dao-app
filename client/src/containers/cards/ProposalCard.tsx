@@ -1,26 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { Badge, Box, Flex } from '@chakra-ui/react';
+import React from 'react';
+import { Flex, Box, useStyleConfig } from '@chakra-ui/react';
 
 interface IProposalCardProps {
   children: React.ReactNode;
 }
 
 export const ProposalCard = (props: IProposalCardProps) => {
+  const { ...rest } = props;
+
+  const styles = useStyleConfig('Card');
+
   return (
-    // Re-usable box for the proposal card
     <Flex>
-      <Box
-        className="ui proposal cards"
-        w="520px"
-        radius="10px"
-        h="250px"
-        mt={10}
-        rounded="lg"
-        overflow="hidden"
-        boxShadow="lg"
-        bg="black"
-        opacity={0.7}
-      >
+      <Box w="520px" h="250px" __css={styles} {...rest}>
+        {props.children}
+      </Box>
+    </Flex>
+  );
+};
+
+export const MyProposalCard = (props: IProposalCardProps) => {
+  const { ...rest } = props;
+
+  const styles = useStyleConfig('Card');
+
+  return (
+    <Flex>
+      <Box w="835px" height="389px" __css={styles} {...rest}>
         {props.children}
       </Box>
     </Flex>

@@ -22,8 +22,8 @@ import bcrypt from 'bcryptjs';
   this.password = await bcrypt.hash(this.password, salt);
 })
 export class User {
-  @prop({ type: String, required: true })
-  name!: string;
+  // @prop({ type: String, required: true })
+  // name!: string;
 
   @prop({ type: String, required: true })
   email!: string;
@@ -31,8 +31,8 @@ export class User {
   @prop({ type: String, required: true })
   password!: string;
 
-  @prop({ type: Boolean, required: true, default: false })
-  isAdmin?: boolean;
+  // @prop({ type: Boolean, required: true, default: false })
+  // isAdmin?: boolean;
 
   public _id?: string;
 }

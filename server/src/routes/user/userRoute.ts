@@ -23,4 +23,8 @@ router.post(
   updateProfile
 );
 
+// router.route('/');
+
+// router.route('/:id');
+
 export default router;

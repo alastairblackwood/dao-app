@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
 import {
   Flex,
   CSSReset,
@@ -18,7 +19,6 @@ import {
   MenuList,
 } from '@chakra-ui/react';
 import LoginForm from '../components/forms/LoginForm';
-import { Card } from '../containers/cards';
 import { ProposalCard } from '../containers/cards/ProposalCard';
 import { ProposalDetail } from '../containers/cards/ProposalDetail';
 import { AiOutlineLogout } from 'react-icons/ai';
@@ -30,7 +30,9 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
-export const ProtectedPage = ({ children }: LayoutProps) => {
+const ProtectedPage = ({ children }: LayoutProps) => {
+  const { logout } = useContext(AuthContext);
+
   return (
     <Flex
       bgGradient="linear(to-t, #1d2225, #707070)"
@@ -76,7 +78,7 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
                     </Link>
                   </Button>
                   <Button variant="ghost">
-                    <Link to="/protected/my-proposals">
+                    <Link to=":id">
                       <Badge
                         fontFamily={'Audiowide-Regular'}
                         textTransform="uppercase"
@@ -112,15 +114,13 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
                       cursor={'pointer'}
                       minW={0}
                     >
-                      <Link to="/">
-                        <Text>Logout</Text>
-                      </Link>
+                      <Button onClick={logout}>Logout</Button>
                     </Button>
                   </Stack>
-                  <Box isInline={'baseline'}>
+                  <Box isInline={'baseline'} mb={3}>
                     <Menu>
                       <Button variant={'ghost'}>
-                        <MenuButton>
+                        <MenuButton variant={''}>
                           <Badge
                             fontFamily={'Audiowide-Regular'}
                             textTransform="uppercase"
@@ -208,3 +208,5 @@ export const ProtectedPage = ({ children }: LayoutProps) => {
     </Flex>
   );
 };
+
+export default ProtectedPage;

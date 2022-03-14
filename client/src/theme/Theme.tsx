@@ -1,13 +1,14 @@
 import { extendTheme } from '@chakra-ui/react';
+import Card from './custom/card';
 
 const theme = extendTheme({
+  components: {
+    Card,
+  },
   fonts: {
     heading: 'Audiowide, sans-serif',
     body: 'AudioWide, sans-serif',
   },
-});
-
-const colors = extendTheme({
   colors: {
     black: {
       100: '#f5f5f5',

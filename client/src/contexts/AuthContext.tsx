@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import React, { createContext, useState, ReactNode, useContext } from 'react';
 
-const API_URL = 'http://localhost:8000/api/';
+const API_URL = process.env.REACT_APP_API_URL;
 
 export interface IAuthContext {
   user: any;
@@ -29,14 +29,14 @@ export const AuthContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [user, setUser] = useState<any>('');
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const register = async (
     email: string,
     password: string
   ): Promise<AxiosResponse> => {
-    const { data } = await axios.post(API_URL + 'signup', {
+    const { data } = await axios.post(API_URL + 'register', {
       email,
       password,
     });
@@ -48,16 +48,13 @@ export const AuthContextProvider = ({
     password: string
   ): Promise<AxiosResponse> => {
     setLoading(true);
-    const { data } = await axios.post(API_URL + 'signin', {
+    const { data } = await axios.post(`${API_URL}/login`, {
       email,
       password,
     });
-
-    if (data.accessToken) {
-      localStorage.setItem('user', JSON.stringify(data));
-      setLoggedIn(true);
-    }
-    setLoading(false);
+    localStorage.setItem('user', JSON.stringify(data));
+    console.log('doing something');
+    setLoggedIn(true);
     return data;
   };
 

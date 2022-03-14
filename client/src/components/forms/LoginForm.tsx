@@ -1,120 +1,141 @@
-import axios from 'axios';
-import React, { useState, useEffect, ReactNode, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import {
   Flex,
   Box,
-  Heading,
   FormControl,
   FormLabel,
   Input,
-  InputGroup,
-  InputRightElement,
-  Icon,
   Button,
   CircularProgress,
   Text,
-  useColorModeValue,
+  FormErrorMessage,
 } from '@chakra-ui/react';
-
-import { AuthContext, AuthContextProvider } from '../../contexts/AuthContext';
-import userLogin from '../../utils/mockApi';
+import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../contexts/AuthContext';
 import ErrorMessage from '../../utils/ErrorMessage';
-import { config } from 'process';
+
+interface LoginFormValues {
+  email: string;
+  password: string;
+}
 
 const LoginForm = () => {
+  // Auth context for login
   const { loggedIn, login, logout } = useContext(AuthContext);
 
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  // useState Hook for form validation
+
   const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [error, setErrorMessage] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const handlePasswordVisibility = () => setShowPassword(!showPassword);
+  // useForm Hook for form validation
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setError,
+    formState: { errors },
+    formState,
+  } = useForm<LoginFormValues>({ mode: 'onBlur' });
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-
+  const onSubmit = async (data: LoginFormValues): Promise<void> => {
+    if (!data.email || !data.password) {
+      return setErrorMessage('Please enter your email and password');
+    }
     setLoading(true);
     try {
-      await login(email, password);
+      await login(data.email, data.password);
       setLoading(false);
       setShowPassword(false);
     } catch (error) {
-      setError('Invalid username or password');
       setLoading(false);
-      setEmail('');
-      setPassword('');
       setShowPassword(false);
     }
+    console.log(data);
   };
 
+  // useEffect(() => {
+  //   setError('email', {
+  //     type: 'manual',
+  //     message: 'Please enter a valid email address',
+  //   });
+  // }, [setError]);
+
+  // const isError = input === '';
+
+  const handlePasswordVisibility = () => setShowPassword(!showPassword);
+
   return (
-    <Flex justifyContent={'center'} alignItems={'center'} mt={4}>
+    <Flex justifyContent="center" alignItems="center" mt="4px">
       <Box>
-        {loggedIn ? (
-          <Box textAlign="center">
-            <Text fontFamily="Saira-Condensed">{email} logged in!</Text>
-            <Button
-              variant="outline"
-              width="full"
-              mt={4}
-              onClick={async () => await logout()}
-            >
-              Sign out
-            </Button>
-          </Box>
-        ) : (
-          <>
-            <Box my={0} textAlign="left">
-              <form onSubmit={handleSubmit}>
-                {error && <ErrorMessage message={error} />}
-                <FormControl isRequired>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {error && <ErrorMessage message={error} />}
+
+          {loggedIn ? (
+            <Box textAlign="center">
+              <Text fontFamily="Saira-Condensed"> logged in!</Text>
+              <Button
+                variant="outline"
+                width="full"
+                mt={4}
+                onClick={async () => await logout()}
+              >
+                Sign out
+              </Button>
+            </Box>
+          ) : (
+            <>
+              <Box my={0} textAlign="left">
+                <FormControl>
                   <FormLabel
-                    fontFamily="Saira-Condensed"
+                    fontFamily="Exo 2"
                     fontSize="12px"
                     fontWeight={'bold'}
                   >
                     Email
                   </FormLabel>
                   <Input
-                    w="250px"
-                    borderColor={'white'}
-                    borderStart={'none'}
-                    borderEnd={'none'}
-                    borderTop={'none'}
-                    type="email"
-                    placeholder="labrys@email.com"
-                    size="sm"
-                    onChange={event => setEmail(event.currentTarget.value)}
+                    {...register('email', {
+                      required: 'email is required',
+                    })}
+                    placeholder="email address"
+                    width={'250'}
+                    borderWidth="0px 0px 1px 0px'"
+                    borderColor="white"
+                    type={'email'}
+                    size={'sm'}
                   />
                 </FormControl>
-                <FormControl isRequired mt={4}>
+
+                <FormControl mt={4}>
                   <FormLabel
-                    fontFamily="Saira-Condensed"
+                    fontFamily="Exo 2"
                     fontSize="12px"
                     fontWeight={'bold'}
                   >
                     Password
                   </FormLabel>
-                  <InputGroup>
-                    <Input
-                      borderColor={'white'}
-                      borderStart={'none'}
-                      borderEnd={'none'}
-                      borderTop={'none'}
-                      type={showPassword ? 'text' : 'password'}
-                      placeholder="*******"
-                      size="sm"
-                      onChange={event => setPassword(event.currentTarget.value)}
-                    />
-                  </InputGroup>
+                  <Input
+                    {...register('password', {
+                      required: {
+                        value: true,
+                        message: 'password is required',
+                      },
+                    })}
+                    borderWidth="0px 0px 1px 0px'"
+                    borderColor="white"
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="*******"
+                    size="sm"
+                  />
                 </FormControl>
-                {/* <FormControl isRequired mt={4}>
+                {/* // CONFIRM PASSWORD FIELD UNDER CONSTRUCTION
+                 <FormControl isRequired mt={4}>
                   <FormLabel
-                    fontFamily="Saira-Condensed"
+                    fontFamily="Exo 2"
                     fontSize="10px"
                     fontWeight={'bold'}
                   >
@@ -133,28 +154,16 @@ const LoginForm = () => {
                     />
                   </InputGroup>
                 </FormControl> */}
-                {/* <InputRightElement width="3rem">
-                      <Button
-                        h="1.5rem"
-                        size="sm"
-                        onClick={handlePasswordVisibility}
-                      >
-                        {showPassword ? (
-                          <Icon name="view-off" />
-                        ) : (
-                          <Icon name="view" />
-                        )}
-                      </Button>
-                    </InputRightElement> */}
-                {/* </InputGroup>
-                </FormControl> */}
-                {/* <Button
+
+                <Button
                   width="full"
                   variantColor="teal"
                   variant="ghost"
                   mt={4}
+                  fontSize={20}
+                  fontFamily="Exo 2"
+                  fontWeight={'bold'}
                   type="submit"
-                  fontFamily="Saira-Condensed"
                 >
                   {loading ? (
                     <CircularProgress
@@ -165,38 +174,27 @@ const LoginForm = () => {
                   ) : (
                     'Login'
                   )}
-                </Button> */}
-                <Box>
-                  <Text
-                    fontFamily="Saira-Condensed"
-                    fontWeight="bold"
-                    fontSize={20}
-                    mt={2}
-                    ml={24}
-                  >
-                    <Link to="/protected">Login</Link>
-                  </Text>
-                </Box>
+                </Button>
+
                 <Box textAlign="center">
-                  <Text fontWeight="bold" fontSize="12px">
+                  <Text fontWeight="bold" fontSize="12px" fontFamily="Exo 2">
                     New member?{' '}
                     <Button
+                      ml={2}
                       w={'80px'}
-                      type={'submit'}
                       bg={'transparent'}
-                      fontFamily="Saira-Condensed"
+                      fontFamily="Exo 2"
                       fontWeight={'bold'}
                       fontSize={14}
-                      onSubmit={handleSubmit}
                     >
                       Register here
                     </Button>
                   </Text>
                 </Box>
-              </form>
-            </Box>
-          </>
-        )}
+              </Box>
+            </>
+          )}
+        </form>
       </Box>
     </Flex>
   );

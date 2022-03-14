@@ -1,12 +1,3 @@
-import express from 'express';
-
-const router = express.Router();
-
-// user login
-// router.post("/", login)
-
-router.get('/', (req, res) => {
-  res.send('user route');
-});
+const router = require('./userRoute');
 
 export default router;

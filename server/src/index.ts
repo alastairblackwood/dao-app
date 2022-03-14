@@ -9,7 +9,7 @@ const port = process.env.PORT || 8000;
 
 dotenv.config();
 import connectDB from './config/db';
-import userRoutes from './routes/user/userRoute';
+import router from './routes/user/userRoute';
 import { errorHandler, notFound } from './middleswares/errorMiddleware';
 
 connectDB();
@@ -22,8 +22,6 @@ app.use(helmet());
 app.use(compression());
 app.use(cors());
 app.use(morgan('dev'));
-app.use(notFound);
-app.use(errorHandler);
 
 app.get('/', (req, res) => {
   res.status(200).json({
@@ -31,7 +29,9 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/api/auth', userRoutes);
+app.use('/api', router);
+app.use(notFound);
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Server successfully running on port ${port}`);
